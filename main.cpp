@@ -1,5 +1,6 @@
 #include <QtGui/QGuiApplication>
 #include "qtquick2applicationviewer.h"
+#include "reloader.h"
 
 int main(int argc, char *argv[])
 {
@@ -7,8 +8,11 @@ int main(int argc, char *argv[])
 
     QtQuick2ApplicationViewer viewer;
     viewer.setTitle("tst_reloader");
-    viewer.setMainQmlFile(QStringLiteral("qml/qmlreloader/main.qml"));
+    QString path = QStringLiteral("../qmlreloader/qml/qmlreloader/main.qml");
+    viewer.setMainQmlFile(path);
     viewer.showExpanded();
+
+    Reloader reloader(&viewer, path);
 
     return app.exec();
 }
